@@ -2,15 +2,30 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
+use App\Entity\Reservation;
+use ApiPlatform\Metadata\Get;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use App\Repository\UserRepository;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\GetCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+
+#[ApiResource(
+    operations: [
+        new Get(),
+        new GetCollection()
+    ]
+)]
+
 class User implements UserInterface , PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -28,7 +43,17 @@ class User implements UserInterface , PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['read:user'])]
     private ?string $username = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Reservation::class)]
+
+    private Collection $user_reservation;
+
+    public function __construct()
+    {
+        $this->user_reservation = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -88,6 +113,7 @@ class User implements UserInterface , PasswordAuthenticatedUserInterface
     {
         return (string) $this->email;
         return (string) $this->password;
+        
 
     }
 
@@ -115,6 +141,36 @@ class User implements UserInterface , PasswordAuthenticatedUserInterface
     public function setUsername(string $username): self
     {
         $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Reservation>
+     */
+    public function getUserReservation(): Collection
+    {
+        return $this->user_reservation;
+    }
+
+    public function addUserReservation(Reservation $userReservation): self
+    {
+        if (!$this->user_reservation->contains($userReservation)) {
+            $this->user_reservation->add($userReservation);
+            $userReservation->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserReservation(Reservation $userReservation): self
+    {
+        if ($this->user_reservation->removeElement($userReservation)) {
+            // set the owning side to null (unless already changed)
+            if ($userReservation->getUser() === $this) {
+                $userReservation->setUser(null);
+            }
+        }
 
         return $this;
     }

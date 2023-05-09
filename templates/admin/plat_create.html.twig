@@ -1,9 +1,16 @@
 {% extends 'admin/base.html.twig' %}
- {% block main %}
+ {% block admin %}
 
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center content">
 
-  {{ form_start(platForm) }}
+
+    {% for message in app.flashes('success') %} 
+        <div class=" alert alert-success d-flex justify-content-center">
+            {{message}}
+        </div>
+    {% endfor %}
+
+  {{ form_start(platForm, {'attr' : {'class' :'display-6 py-5' }}) }}
 
 
 
@@ -22,6 +29,5 @@
 
 
 
-
-{% endblock main %}
+{% endblock admin %}
 

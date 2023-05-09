@@ -1,0 +1,12 @@
+<div class="d-flex row mx-3 py-3 justify-content-center ">
+	{% if is_granted('IS_AUTHENTICATED_FULLY')%}
+	<button type="button" class="btn btn-primary">
+		<a class="nav-link" href="{{path('reservation_create')}}"> Reserver!
+	</button>
+	{% else %}
+	<button type="button" class="btn btn-primary">
+		<a class="nav-link" href="{{path('login')}}"> Connectez-Vous!
+	</button>
+
+	{% endif %}
+</div>

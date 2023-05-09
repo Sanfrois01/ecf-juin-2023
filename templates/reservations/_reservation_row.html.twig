@@ -1,0 +1,33 @@
+{% if is_granted('ROLE_ADMIN') %}
+
+{% for reservation in pagination|sort((a,b) => a.datereservation < b.datereservation )  %}  
+    <tr>
+      <th scope="row"></th>
+      <td>{{reservation.user.username}}</td>
+      <td>{{reservation.datereservation.format('d/m/Y')}}</td>
+      <td>{{reservation.horaireReservations[0].heurereservation}}</td>
+      <td class="text-center">{{reservation.couvertsreservation }}</td>
+      <td>{{reservation.commentairereservation}}</td>
+      <td>{{reservation.allergiereservation}}</td>
+
+    </tr>
+
+{% endfor %}
+{% elseif app.session %}
+
+{% for reservation in reservations_user|sort((a,b) => a.datereservation < b.datereservation )  %}  
+    <tr>
+      <th scope="row"></th>
+      <td>{{reservation.user.username}}</td>
+      <td>{{reservation.datereservation.format('d/m/Y')}}</td>
+      <td>{{reservation.horaireReservations[0].heurereservation}}</td>
+      <td class="text-center" >{{reservation.couvertsreservation }}</td>
+      <td>{{reservation.commentairereservation}}</td>
+      <td>{{reservation.allergiereservation}}</td>
+
+    </tr>
+
+{% endfor %}
+{% endif %}
+
+

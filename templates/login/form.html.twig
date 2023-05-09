@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    <div class="py-5 my-5 d-flex justify-content-center">
+    <div class="py-5 my-5 d-flex justify-content-center content">
     <form action="{{ path('login') }}" method="post">
 
     <div class="form-group">
@@ -15,7 +15,7 @@
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
         <input class="form-control" type="hidden" name="_target_path" value="{{ path('plats_liste') }}"/>
     </div>
-        <button class="btn btn-success w-100 my-5" type="submit">se connecter</button>
+        <button class="btn btn-success w-100 my-5" type="submit">Se connecter</button>
     
     <p> Vous n'avez pas de compte : <a href =" {{path('app_register') }}" >Enregistrez-vous </a></p>
     </div>

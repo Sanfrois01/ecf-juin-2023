@@ -16,6 +16,21 @@ class SearchData
 
   public $categories = [];
 
+  /**
+   * @var Reservation[]
+   */
 
+   public $reservations = [];
+
+   /**
+    * @var Username[]
+    */
+  public $username = [];
+
+  /**
+   * @var int
+   */
+
+  public $page = 1;
 
 }

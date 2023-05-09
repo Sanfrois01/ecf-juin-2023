@@ -3,11 +3,11 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>
-			{% block title %}Welcome!
+			{% block title %}Quai Antique
 			{% endblock %}
 		</title>
 		<link
-		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+		rel="icon" href="../upload/Quai_Antique.jpg">
 		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
@@ -19,30 +19,12 @@
 
 
 	</head>
+	{% include "accueil/_navbar.html.twig" %}
 
-	{% block nav %}
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<div class="container-fluid">
-
-				<a class="navbar-brand" href="#">
-					<img src="upload\Quai_Antique.jpg" alt="logo Quai Antique" width="" height="">
-				</a>
-				<a class="nav-link" href="{{ path('plats_liste') }}">Les Plats</a>
-				<a class="nav-link" href="{{ path('menu') }}">Les Menus</a>
-				<a class="nav-link" href="{{path('reservations')}}">Reserver</a>
-				{% if is_granted('ROLE_ADMIN') or ('ROLE_USER') %}
-					<p class="mx-5"> Bienvenue : {{ app.user.username }}
-          <a class = "link link-danger" href ="{{ path('logout') }}"> Deconnexion </a></p>
-				{% else %}
-				<a class=" mx-5 nav-link" href="{{path('login')}}">Se connecter</a>
-				{% endif %}
-
-			</div>
-		</nav>
-	{% endblock %}
-
-
-	<body>
+	<body class="content">
 		{% block body %}{% endblock %}
 	</body>
+
+	{% include "accueil/_footer.html.twig" %}
+
 </html>

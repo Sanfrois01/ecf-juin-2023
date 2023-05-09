@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les Menus{% endblock %}
+
+{% block body %}
+
+
+    <h1 class="py-5 mx-5 text-center">Les Menus</h1>
+
+        {% for message in app.flashes('warning') %} 
+        <div class=" alert alert-warning d-flex justify-content-center">
+            {{message}}
+        </div>
+        {% endfor %}
+
+        {% for message in app.flashes('success') %} 
+        <div class=" alert alert-success d-flex justify-content-center">
+            {{message}}
+        </div>
+        {% endfor %}
+
+
+    <section class="container content">
+    
+        {% include "menu/_menu.html.twig" %}
+
+
+    {% if is_granted("ROLE_ADMIN") %}
+    <div class="d-flex row mx-3 py-3 justify-content-center ">
+        <button type="button" class="btn btn-primary">
+            <a class="nav-link" href="{{path('menu_create')}}"> Creer un menu
+        </button>
+    </div>    
+    {% endif %}
+    
+
+
+    </section>
+
+
+{% endblock %}

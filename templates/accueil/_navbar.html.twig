@@ -1,0 +1,20 @@
+	{% block nav %}
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+
+				<a class="navbar-brand" href="{{ path('app_accueil') }}">
+					<img src="../upload/Quai_Antique.jpg" alt="logo Quai Antique" width="" height="">
+				</a>
+				<a class="nav-link" href="{{ path('plats_liste') }}">Les Plats</a>
+				<a class="nav-link" href="{{ path('menus_liste') }}">Les Menus</a>
+				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+					<a class="nav-link" href="{{path('reservations')}}">Réservations</a>
+					<a class="fst-italic nav-link disabled"> Bienvenue : {{ app.user.username }}
+          <a class = "link link-danger" href ="{{ path('logout') }}"> Deconnexion </a></p>
+				{% else %}
+				<a class=" mx-5 nav-link" href="{{path('login')}}">Se connecter</a>
+				{% endif %}
+
+			</div>
+		</nav>
+	{% endblock %}

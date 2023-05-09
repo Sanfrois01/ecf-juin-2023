@@ -49,6 +49,7 @@ class Plat
 
     #[ORM\Column]
     #[Groups(['read:categorie'])]
+    
     private ?float $prix_plat = null;
 
     #[ORM\ManyToMany(targetEntity: CategoriePlat::class, mappedBy: 'categorie_plat')]

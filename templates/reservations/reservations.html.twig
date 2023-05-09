@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les Réservations
+{% endblock %}
+
+{% block body %}
+
+		<h1 class="text-center py-5 mx-5">Les Réservations</h1>
+		<h2 class="text-center">Voici vos reservations</h2>
+<img src="../upload/restaurant.jpg"  class="img-fluid my-5" id="restaurant" alt="table de restautant">
+		<div class ="content">
+				{% include 'reservations/_reservation.html.twig' %}
+
+{% if is_granted('ROLE_ADMIN') %}
+			<div class="d-flex justify-content-center">
+				{{ knp_pagination_render(pagination) }}
+			</div>
+{% endif %}
+			<div class="d-flex  mx-3 py-3 justify-content-center">
+				{% include "accueil/_reservationButton.html.twig" %}
+			</div>
+		</div>
+
+
+	
+	
+
+
+{% endblock %}

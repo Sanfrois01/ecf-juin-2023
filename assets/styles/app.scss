@@ -1,4 +1,53 @@
+@import "~bootstrap/scss/functions";
+@import "_variables";
+
+/*
+Police pris sur Dafont.com, Licence Free
+*/
+@font-face{
+  font-family: "BlantickScript";
+  src:url(../styles/fonts/blantick-script.ttf);
+}
+
+@font-face{
+  font-family: "SundayGallery";
+  src:url(../styles/fonts/sunday-gallery.ttf);
+}
+  
 @import "~bootstrap/scss/bootstrap";
+
+
+h1{
+  font-family: 'BlantickScript','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 5em;
+}
+
+h2 , h4 {
+  font-family: "SundayGallery", 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 3em;
+}
+
+#text-footer {
+  font-family: "SundayGallery", 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 2em;
+
+}
+
+.nav-link {
+  font-family: 'BlantickScript','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 2em;
+
+}
+.nav-link:hover{
+  text-decoration: underline;
+}
+
+#restaurant{
+  height: 400px;
+}
+
+
+
 
 .menu-title {
   text-decoration: solid;
@@ -7,5 +56,15 @@
 
 .week {
   font-style: italic;
+}
+
+html , body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex-grow: 1;
 }
 

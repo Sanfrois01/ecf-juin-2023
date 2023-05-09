@@ -9,11 +9,17 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LoginController extends AbstractController
 {
+
+
+    /*Authentification des utilisateurs*/ 
+
+
     #[Route('/login', name: 'login')]
     public function index(AuthenticationUtils $authenticationUtils): Response
     {
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
+
 
         return $this->render('login/index.html.twig', [
             'last_username' => $lastUsername,

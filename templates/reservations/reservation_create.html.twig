@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+
+ {% block body %}
+
+<div class="d-flex justify-content-center content">
+
+{{form_start(reservationForm , {'attr' : {'class' :'display-6' }})}}
+
+
+
+
+
+{{form_end(reservationForm)}}
+
+
+
+
+
+</div>
+
+{% for message in app.flashes('success') %} 
+
+<div class=" alert alert-success d-flex justify-content-center">
+    {{message}}
+</div>
+
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+{% endblock body %}
+

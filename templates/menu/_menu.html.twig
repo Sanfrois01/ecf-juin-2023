@@ -1,0 +1,19 @@
+   {% for menu in menus %}
+    
+    <section class="row d-flex justify-content-center text-center" >
+        <div class="shadow-lg p-3 m-5 bg-body">
+        <h4 class="menu-title"> {{menu.nommenu}}</h4>
+        <div>
+          <span class="week">{{menu.periodemenu}}</span> </br>
+          <span> {{menu.typemenu}} : {{menu.prixmenu}} €</span>
+        </div>
+        {% if is_granted('ROLE_ADMIN') %}
+          <div class="d-flex justify-content-evenly">
+            <a type="button" class="btn btn-warning  p-2" href="{{ path('menu_update', {'id': menu.id }) }}">Modifier</a>
+            <a type="button" class="btn btn-danger  p-2" href="{{ path('menu_delete', {'id': menu.id }) }}">Supprimer</a>
+          </div>
+	    {% endif %}
+        </div>
+    </section>
+   {% endfor %}
+   

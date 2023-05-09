@@ -6,6 +6,8 @@ use App\Data\SearchData;
 use App\Entity\Plat;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\Pagination\PaginationInterface;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @extends ServiceEntityRepository<Plat>
@@ -17,9 +19,15 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class PlatRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+        /**
+     * @var PaginatorInterface
+     */
+    private $paginator;
+
+    public function __construct(ManagerRegistry $registry , PaginatorInterface $paginator)
     {
         parent::__construct($registry, Plat::class);
+        $this->paginator = $paginator;
     }
 
     public function save(Plat $entity, bool $flush = false): void
@@ -41,10 +49,10 @@ class PlatRepository extends ServiceEntityRepository
     }
     /**
      * Récuperes les plats en lien avec la recherche
-     * @return Plat[]
+     * @return PaginationInterface
      */
 
-    public function findSearch(SearchData $search) : array
+    public function findSearch(SearchData $search) : PaginationInterface
     {   
         $query = $this
             ->createQueryBuilder('p')
@@ -64,7 +72,12 @@ class PlatRepository extends ServiceEntityRepository
         }
         
 
-        return $query->getQuery()->getResult();
+        $query = $query->getQuery();
+        return $this->paginator->paginate(
+            $query,
+            $search->page,
+            6
+        );
     }
 
 //    /**

@@ -1,8 +1,8 @@
-import { Flipper , spring } from "flip-toolkit"
 
 /**
  * @property {HTMLElement} content
  * @property {HTMLFormElement} form
+ * @property {HTMLElement}  table
  */
 
 
@@ -53,72 +53,10 @@ async  loadUrl (url) {
   if (response.status >=200 && response.status  < 300 ){
     const data = await response.json()
     this.content.innerHTML = data.content
-    this.flipContent(data.content)
     history.replaceState({}, '', url)
   } else {
     console.error(response)
   }
-}
-
-/**
- * Remplace les éléments de la grille avec un effet flip
- * @param {string} content 
- */
-
-flipContent (content) {
-  const exitSpring = function (element , index , onComplete ){
-    spring({
-      config: 'stiff',
-      values: {
-        translateY: [0, -20],
-        opacity: [1, 0]
-      },
-      onUpdate: ({ translateY, opacity }) => {
-        element.style.opacity = opacity;
-        element.style.transform = `translateY(${translateY}px)`;
-      },
-      onComplete 
-    })
-  }
-
-  const appearSpring = function (element , index  ){
-    spring({
-      config: 'stiff',
-      values: {
-        translateY: [20 , 0],
-        opacity: [0 , 1]
-      },
-      onUpdate: ({ translateY, opacity }) => {
-        element.style.opacity = opacity;
-        element.style.transform = `translateY(${translateY}px)`;
-      },
-      delay: index * 20
-    })
-  }
-
-  const flipper = new Flipper ({
-    element : this.content
-  })
-  Object.values(this.content.children).forEach(element => {
-    flipper.addFlipped({
-      element,
-      flipId : element.id,  
-      shouldFlip : false,
-      onExit : exitSpring,
-    })
-  })
-  flipper.recordBeforeUpdate()
-  this.content.innerHTML = content
-  Object.values(this.content.children).forEach(element => {
-    flipper.addFlipped({
-      element,
-      flipId :  element.id,
-      onAppear : appearSpring
-    })
-  })
-  flipper.update()
-
-
 }
 
 }
