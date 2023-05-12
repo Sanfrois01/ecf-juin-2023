@@ -16,3 +16,5 @@ Technologie utilisées :
 - Projet deployer sur Hostinger
 - Filezilla 
 - Composer
+
+L'admin est déja créé et est communiqué dans le compte rendu de l'ECF.
