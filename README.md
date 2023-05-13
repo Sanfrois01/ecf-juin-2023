@@ -17,4 +17,6 @@ Technologie utilisées :
 - Filezilla 
 - Composer
 
-L'admin est déja créé et est communiqué dans le compte rendu de l'ECF.
+La création de l'admin se fait comme suit :
+Créé un utilisateur grace au formulaire d'inscription et faire la commande sql dans le terminal
+UPDATE `user` SET `roles` = '[\"ROLE_ADMIN\"]' WHERE `user`.`id` = 1;
