@@ -1,0 +1,13 @@
+insert into `categorie_plat_plat` (`categorie_plat_id`, `plat_id`) values (5, 4);
+insert into `categorie_plat_plat` (`categorie_plat_id`, `plat_id`) values (5, 7);
+insert into `categorie_plat_plat` (`categorie_plat_id`, `plat_id`) values (6, 4);
+insert into `categorie_plat_plat` (`categorie_plat_id`, `plat_id`) values (6, 7);
+insert into `categorie_plat_plat` (`categorie_plat_id`, `plat_id`) values (8, 1);
+insert into `categorie_plat_plat` (`categorie_plat_id`, `plat_id`) values (8, 2);
+insert into `categorie_plat_plat` (`categorie_plat_id`, `plat_id`) values (8, 3);
+insert into `categorie_plat_plat` (`categorie_plat_id`, `plat_id`) values (9, 1);
+insert into `categorie_plat_plat` (`categorie_plat_id`, `plat_id`) values (9, 3);
+insert into `categorie_plat_plat` (`categorie_plat_id`, `plat_id`) values (11, 2);
+insert into `categorie_plat_plat` (`categorie_plat_id`, `plat_id`) values (12, 5);
+insert into `categorie_plat_plat` (`categorie_plat_id`, `plat_id`) values (12, 6);
+insert into `categorie_plat_plat` (`categorie_plat_id`, `plat_id`) values (12, 8);
