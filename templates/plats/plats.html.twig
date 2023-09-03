@@ -20,8 +20,8 @@
 
 
 <div class="container js-filter content">
-	<div class="d-md-flex">
-				<div class "col-md-9 ">
+	<div class="d-md-flex ">
+				<div class "col-md-10 ">
 					{% include 'plats/_filter.html.twig' with {form:form} only %}
 				</div>
 
@@ -31,9 +31,8 @@
 
 				<div class="d-flex justify-content-center">{{ knp_pagination_render(plats) }}</div>
 			</div>
-
-
 </div>
+
 {% if is_granted('ROLE_ADMIN') %}
 
 <div class="d-flex row mx-3 py-3 justify-content-center ">

@@ -20,10 +20,14 @@ class PlatType extends AbstractType
     {
         $builder
             ->add('nom_plat' , TextType::class,[
-                "label" => "Nom du plat"
+                "label" => "Nom du plat",
+                "sanitize_html" => true 
+
             ])            
             ->add('description_plat', TextareaType::class,[
-                "label" => "Description du plat"
+                "label" => "Description du plat",
+                "sanitize_html" => true 
+
             ])            
             ->add('img_plat', FileType::class, [
                 'label' => 'Image du plat',

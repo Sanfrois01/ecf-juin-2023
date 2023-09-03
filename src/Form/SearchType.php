@@ -21,7 +21,9 @@ class SearchType extends AbstractType
         'required' => false,
         'attr' => [
           'placeholder' => 'Rechercher'
-        ]
+        ],
+        "sanitize_html" => true 
+
       ])
       ->add ('categories' , EntityType::class,[
         'label' => false,

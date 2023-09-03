@@ -34,13 +34,17 @@ class ReservationType extends AbstractType
             ])
             ->add('allergie_reservation', TextType::class,[
                 "label" => "Vos allergies",
-                "required" => false
+                "required" => false,
+                "sanitize_html" => true 
+
 
             ])
         
             ->add('commentaire_reservation' , TextType::class,[
                 "label" => "Commentaires (enfants , emplacement...)",
-                "required" => false
+                "required" => false,
+                "sanitize_html" => true 
+
             ])
             ->add('horaireReservations', EntityType::class,[
                 'class' => HoraireReservation::class,

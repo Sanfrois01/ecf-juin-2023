@@ -17,15 +17,20 @@ class MenuType extends AbstractType
         $builder
             ->add('nom_menu', TextType::class,[
                 "label" => "Nom du Menu",
-                "required" => true
+                "required" => true,
+                "sanitize_html" => true 
             ])
             ->add('periode_menu', TextType::class,[
                 "label" => "Période du Menu",
-                "required" => true
+                "required" => true,
+                "sanitize_html" => true 
+
             ])
             ->add('type_menu', TextType::class,[
                 "label" => "Type de Menu",
-                "required" => true
+                "required" => true,
+                "sanitize_html" => true 
+
             ])
             ->add('prix_menu', NumberType::class,[
                 'html5' => true,

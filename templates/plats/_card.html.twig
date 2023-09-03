@@ -7,7 +7,7 @@
 			<p class="card-text text-primary fst-italic">{{plat.prixplat}}€</p>
 			
 			{% if is_granted('ROLE_ADMIN') %}
-			<div class="d-flex justify-content-evenly">
+			<div class="d-flex justify-content-around">
 				<a type="button" class="btn btn-warning  p-2" href="{{ path('plats_update', {'id': plat.id }) }}">Modifier</a>
 				<a type="button" class="btn btn-danger  p-2" href="{{ path('plats_delete', {'id': plat.id }) }}">Supprimer</a>
 			</div>

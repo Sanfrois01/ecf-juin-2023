@@ -18,6 +18,15 @@
 <img class="img-fluid col-4 my-5 py-5 d-none d-lg-block" src="..\upload\photo-accueil2.jpg" alt="photo de cuisine">
 </div>
 
+{% if is_granted('ROLE_ADMIN') %}
+
+<img class="img-fluid col-4 my-5 py-5 d-none d-lg-block" src="..\admin\upload\photo-accueil2.jpg" alt="photo de cuisine">
+</div>
+
+{% endif %}
+
+
+
 
 <div class="d-flex justify-content-center my-2 py-2">
 {% include "accueil/_reservationButton.html.twig" %}
